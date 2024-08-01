@@ -1,0 +1,107 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #2e003e, #19002e);
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    transition: background 1s ease;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+h1 {
+    font-size: 4rem;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 20%;
+    transition: transform 0.3s, color 0.3s;
+    animation: name-glow 2s infinite alternate;
+}
+
+@keyframes name-glow {
+    0% { text-shadow: 0 0 10px #ff9a9e; }
+    100% { text-shadow: 0 0 20px #fad0c4; }
+}
+
+h1:hover {
+    transform: scale(1.1);
+    color: #ff9a9e;
+}
+
+#flower-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#quote-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.9;
+    transition: opacity 0.3s, transform 0.3s;
+    animation: quote-animation 4s infinite;
+    visibility: hidden;
+}
+
+@keyframes draw {
+    from {
+        stroke-dasharray: 0, 100;
+    }
+    to {
+        stroke-dasharray: 100, 0;
+    }
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes quote-animation {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
+
+.flower {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    position: absolute;
+    animation: draw 2s ease forwards, bloom 2s ease forwards;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
